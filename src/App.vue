@@ -18,7 +18,12 @@
     :cellSize="cellSize"
     :boardSize="boardSize"
     :speed= "speed"
+    :isPlaying="isPlaying"
   />
+  <div>Scores: {{ scores }}</div>
+  <button>
+  {{ isPlaying ? "Stop" : "Play"}}
+  </button>
   </div>
 </template>
 
@@ -31,10 +36,21 @@ export default {
   },
   data(){
     return {
-      cellSize: 10,
+      cellSize: 30,
       boardSize: 5,
-      speed: 1
+      speed: 1,
+      scores: 0,
+      isPlaying: false,
+
     };
+  },
+  methods: {
+    start(){
+      this.isPlaying = true;
+    },
+    stop(){
+      this.isPlaying =  false;
+    }
   }
 }
 </script>

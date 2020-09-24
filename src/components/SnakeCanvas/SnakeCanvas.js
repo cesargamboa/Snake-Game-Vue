@@ -3,7 +3,8 @@ export default {
     props: {
         cellSize: Number,
         boardSize: Number,
-        speed: Number
+        speed: Number,
+        isPlaying: Boolean,
     },
     computed: {
         boardSizePx(){
