@@ -34,7 +34,7 @@ export default {
   data(){
     return {
       cellSize: 15,
-      boardSize: 40,
+      boardSize: 30,
       speed: 10,
       scores: 0,
       isPlaying: false,
