@@ -2,6 +2,7 @@
 <template>
   <div id="app">
     <h1>Snake Game</h1>
+    <h2>Augusto Cesar Gamboa A. Programacion 2.</h2>
   <div class="score-container">
   <div class="score">Puntaje: <span class="badge">{{ scores }} </span></div>
   <div class="column">
@@ -96,6 +97,10 @@ body{
   text-align: center;
   color: #2c3e50;
   width: 100%;
+}
+h2{
+  color: gray;
+  font-size: 0.9rem;
 }
 button{
   margin-top: 40px;
