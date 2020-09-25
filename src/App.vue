@@ -1,28 +1,25 @@
 
 <template>
   <div id="app">
-  <h1>Snake Game</h1>
-  <div class="column">
-    Filas (px):
-    <input type="number" min="10" v-model.number = "cellSize"/>
-  </div>
-  <div class="column">
-    Tamano del cuadrado
-    <input type="number" min="5" v-model.number = "boardSize"/>
-  </div>
+    <h1>Snake Game</h1>
+  <div class="score-container">
+  <div class="score">Puntaje: <span class="badge">{{ scores }} </span></div>
   <div class="column">
     Velocidad: 
     <input type="number" min="1" v-model.number = "speed"/>
+  </div>
   </div>
   <SnakeCanvas 
     :cellSize="cellSize"
     :boardSize="boardSize"
     :speed= "speed"
     :isPlaying="isPlaying"
+    :stop="stop"
+    :addScores="addScores" 
+    :scores="scores" 
   />
-  <div>Scores: {{ scores }}</div>
-  <button>
-  {{ isPlaying ? "Stop" : "Play"}}
+  <button v-on:click = "isPlaying ? stop(): start()">
+  {{ isPlaying ? "Stop Game" : "Play"}}
   </button>
   </div>
 </template>
@@ -36,9 +33,9 @@ export default {
   },
   data(){
     return {
-      cellSize: 30,
-      boardSize: 5,
-      speed: 1,
+      cellSize: 15,
+      boardSize: 40,
+      speed: 10,
       scores: 0,
       isPlaying: false,
 
@@ -50,6 +47,10 @@ export default {
     },
     stop(){
       this.isPlaying =  false;
+      this.scores = 0;
+    },
+    addScores(scores) {
+      this.scores += scores;
     }
   }
 }
@@ -64,6 +65,29 @@ body{
   align-items: center;
   justify-content: center;
   height: 100vh;
+  overflow: hidden;
+}
+.score-container{
+  display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.score{
+  font-size: 20px;
+    font-weight: 700;
+}
+.badge{
+  background-color: #008CBA;
+  color: white;
+  display: inline-block;
+    padding: .25em .4em;
+    font-size: 110%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -72,6 +96,20 @@ body{
   text-align: center;
   color: #2c3e50;
   width: 100%;
+}
+button{
+  margin-top: 40px;
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  width: 200px;
+  cursor: pointer;
 }
 .column{
   display: inline-block;

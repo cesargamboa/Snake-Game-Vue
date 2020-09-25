@@ -1,7 +1,8 @@
 #snake-canvas{
-    border: solid 1px red;
+    border: solid 2px gray;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
